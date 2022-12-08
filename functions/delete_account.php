@@ -2,13 +2,13 @@
 // Composant pour la suppression d'un (compte) user
 
 // Retourne au tableau de bord si c'est un compte Admin
-if (strtolower($_GET['email']) === 'admin@gmail.com') {
-    header('Location: /dashboard.php?administrator');
-    exit();
-}
+// if (strtolower($_GET['email']) === 'admin@gmail.com') {
+//     header('Location: ../dashboard.php?administrator');
+//     exit();
+// }
 
 // Récupère le fichier users
-$file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'datas' . DIRECTORY_SEPARATOR . 'users';
+$file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'datas' . DIRECTORY_SEPARATOR . 'users.txt';
 
 // Récupère les datas serealisés du fichier
 $datas = file($file);
@@ -30,6 +30,6 @@ foreach($users as $key => $user) {
 file_put_contents($file, serialize($users));
 
 // Retourne au tableau de bord
-header('Location: /dashboard.php?account-deleted');
+header('Location: ../dashboard.php?account-deleted');
 exit();
 ?>

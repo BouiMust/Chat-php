@@ -5,5 +5,5 @@
 session_start();
 unset($_SESSION['user']);
 $success_msg = 'Déconnecté !';
-header('Location: /index.php?logout-successed');
+header('Location: ../index.php?logout-successed');
 exit();

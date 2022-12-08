@@ -17,57 +17,60 @@ $error_msg = null;
 if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
     if (is_logged()) {
         // $error_msg = 'Vous êtes déjà connecté.';
-        // header("Location: /index.php?login-failed&error=$error_msg");
+        // header("Location: /discussion.php?login-failed&error=$error_msg");
         exit();
     } else {
         // je check l'user dans la BDD
-        $datas = file(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'datas' . DIRECTORY_SEPARATOR . 'users');
+        $datas = file(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'datas' . DIRECTORY_SEPARATOR . 'users.txt');
         $users = unserialize($datas[0]);
         (bool) $pseudoIsValid = false;
-        foreach($users as $user) {
+        foreach ($users as $user) {
             // On vérifie le pseudo saisi avec ceux de la BDD
             if (check_pseudo($_POST['pseudo'], $user)) {
                 // si pseudo trouvé, on vérifie le mdp
                 $pseudoIsValid = true;
                 if (check_password($_POST['password'], $user)) {
                     // si mdp valide -> user connecté -> accueil
-                    log_user($_POST['pseudo'], $_POST['password']);
+                    log_user($user['pseudo'], $user['password'], $user['photo']);
                 } else {
                     // sinon mdp invalide
                     $error_msg = 'Mot de passe incorrect';
                 }
             }
         }
-        $pseudoIsValid ? : $error_msg = 'Ce compte n\'existe pas.';
+        $pseudoIsValid ?: $error_msg = 'Ce compte n\'existe pas.';
     }
 } else {
     $error_msg = 'Tous les champs sont obligatoires';
 }
 
 // Vérifie le pseudo
-function check_pseudo($pseudo, $user) {
-    return strtolower($_POST['pseudo']) === $user['pseudo'];
+function check_pseudo($pseudo, $user)
+{
+    return strtolower($pseudo) === $user['pseudo'];
 }
 
 // Vérifie le password
-function check_password($password, $user) {
+function check_password($password, $user)
+{
     return password_verify($password, $user['password']);
 }
 
 // Connecte l'user
-function log_user($pseudo, $password):void {
+function log_user($pseudo, $password, $photo): void
+{
     $user = [
         'pseudo' => $pseudo,
-        'password' => $password
+        'password' => $password,
+        'photo' => $photo
     ];
     $_SESSION['user'] = $user;
-    header('Location: /index.php?login-successed');
+    header('Location: ../index.php?login-successed');
     exit();
 }
 
 
 // Affiche à nouveau la page login en cas d'erreur
 // $error_msg permet de transporter le message d'erreur lors de la redirection (récupérable avec $_GET)
-header("Location: /login.php?login-failed&error=$error_msg");
+header("Location: ../login.php?login-failed&error=$error_msg");
 // exit('fin');
-?>

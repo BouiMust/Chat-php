@@ -1,12 +1,48 @@
 <?php
-define ('YEARS', [
+
+/********************* USERS LIST ******************* */
+
+// Affiche les users inscris
+// Récupère le fichier users
+$file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'datas' . DIRECTORY_SEPARATOR . 'users.txt';
+$datas = file($file);
+$users = unserialize($datas[0]);
+
+// Affiche les users (trier par pseudo)
+function show_users($users)
+{
+    foreach ($users as $user) {
+        // si user = admin => background color
+        $isAdmin = $user['pseudo'] === 'admin' && $user['email'] === 'admin@gmail.com';
+        $buttonDelete = $isAdmin ? '' : "<a href='./functions/delete_account.php?email={$user['email']}'>
+        <button class='delete-user btn btn-secondary' style='padding:2px;border-radius:5px;font-size:0.8em'>Désinscrire</button>
+    </a>";
+        $adminTheme = $isAdmin ?
+            'style="background:#600;color:gold;"'
+            : '';
+        // get 4 last characters of password
+        $partOfPassword = substr($user['password'], -4);
+        echo "<tr $adminTheme>
+            <td>{$user['id']}</td>
+            <td>{$user['pseudo']}</td>
+            <td>{$user['email']}</td>
+            <td>************{$partOfPassword}</td>
+            <td>{$buttonDelete}</td>
+            </tr>";
+    };
+};
+
+
+/********************* VIEWS ******************* */
+
+define('YEARS', [
     (int)date('Y'),
     (int)date('Y') - 1,
     (int)date('Y') - 2,
     (int)date('Y') - 3,
     (int)date('Y') - 4
 ]);
-define ('MONTHS', [
+define('MONTHS', [
     '01' => 'Janvier', // mettre 01 (str) ou 1 (int) ?
     '02' => 'Février',
     '03' => 'Mars',
@@ -37,20 +73,10 @@ $todayView = $directory . date('Y_m_d');
 $timeSelectedView = glob($directory . $yearSelected . '_' . $keyMonthSelected . "*");
 $yearSelectedView = glob($directory . $yearSelected . "*");
 
-// Ajoute une vue pour aujourd'hui
-// vérifie si fichier/vue existant -> on recupere la valeur, on incremente et sauvegarde
-if (file_exists($todayView)) {
-    $totalview = (int)file_get_contents($todayView);
-    $totalview++;
-    file_put_contents($todayView, $totalview);
-} else {
-    // Sinon -> on crée le fichier en ajoutant 1 et on sauvegarde
-    file_put_contents($todayView, 1);
-}
-
 
 // Affiche les vues
-function show_view($time) {
+function show_view($time)
+{
     // Vérifie si c'est un tableau (ce n'est pas le cas de $todayView)
     if (is_array($time)) {
         $totalview = 0;
@@ -59,41 +85,6 @@ function show_view($time) {
             $totalview += (int)file_get_contents($day);
         }
         return $totalview;
-        
     }
     return (int)file_get_contents($time);
 }
-
-/********************* USERS LIST ******************* */
-
-
-// Affiche les users inscris
-// Récupère le fichier users
-$file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'datas' . DIRECTORY_SEPARATOR . 'users';
-$datas = file($file);
-$users = unserialize($datas[0]);
-
-// Affiche les users (trier par pseudo)
-function show_users($users) {
-    foreach($users as $user) {
-        // si user = admin => background color
-        $isAdmin = $user['pseudo'] === 'admin' && $user['email'] === 'admin@gmail.com';
-        $buttonDelete = $isAdmin ? '' : "<a href='functions/delete_account.php?email={$user['email']}'>
-        <button class='btn btn-secondary' style='padding:2px;border-radius:5px;font-size:0.8em'>Désinscrire</button>
-    </a>";
-        $adminTheme = $isAdmin ?
-        'style="background:#600;color:gold;"'
-        : '';
-        // get 4 last characters of password
-        $partOfPassword = substr($user['password'], -4);
-        echo "<tr $adminTheme>
-            <td>{$user['pseudo']}</td>
-            <td>{$user['email']}</td>
-            <td>************{$partOfPassword}</td>
-            <td>{$buttonDelete}</td>
-            </tr>"
-        ;
-    };
-};
-
-?>

@@ -15,7 +15,7 @@ function is_logged():bool {
 // On retreouve les identifiants admin ici
 function is_admin():bool {
     if (is_logged()) {
-        $isAdmin = strtolower($_SESSION['user']['pseudo']) === 'admin' && $_SESSION['user']['password'] === 'aaaa';
+        $isAdmin = strtolower($_SESSION['user']['pseudo']) === 'admin' && $_SESSION['user']['password'] === '$2y$12$HGe6kHfY1mlugxnynTdnbOL4lcA1mYcs8k/Pa00cGGWIHyBOI.bZ.';
         return $isAdmin;
     }
     return false;

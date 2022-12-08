@@ -6,7 +6,7 @@
 // l'user ne peut s'inscrire si l'email existe déjà
 
 // Fichier users
-$file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'datas' . DIRECTORY_SEPARATOR . 'users';
+$file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'datas' . DIRECTORY_SEPARATOR . 'users.txt';
 $error = null;
 
 // VALIDATION FORMULAIRE
@@ -33,18 +33,20 @@ if (!empty($_GET['action']) && $_GET['action'] === 'register') {
 
 // EMAIL FORMAT VALIDE
 // Vérifie si l'email a un format valide
-function email_is_valid($email) :bool {
+function email_is_valid($email): bool
+{
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
 // PSEUDO UNIQUE
 // Vérifie si le pseudo n'a pas déjà été utilisé
-function pseudo_is_unique($pseudo) :bool {
+function pseudo_is_unique($pseudo): bool
+{
     // Récuperère le fichier avec les users et déserealise chaque datas
     // On compare l'email avec ceux des users inscrits
-    $datas = file(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'datas' . DIRECTORY_SEPARATOR . 'users');
+    $datas = file(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'datas' . DIRECTORY_SEPARATOR . 'users.txt');
     $users = unserialize($datas[0]);
-    foreach($users as $user) {
+    foreach ($users as $user) {
         if (strtolower($pseudo) === $user['pseudo']) {
             return false;
         }
@@ -54,10 +56,11 @@ function pseudo_is_unique($pseudo) :bool {
 
 // EMAIL UNIQUE
 // Vérifie si l'email n'a pas déjà été utilisé
-function email_is_unique($email) :bool {
-    $datas = file(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'datas' . DIRECTORY_SEPARATOR . 'users');
+function email_is_unique($email): bool
+{
+    $datas = file(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'datas' . DIRECTORY_SEPARATOR . 'users.txt');
     $users = unserialize($datas[0]);
-    foreach($users as $user) {
+    foreach ($users as $user) {
         if (strtolower($email) === $user['email']) {
             return false;
         }
@@ -66,16 +69,19 @@ function email_is_unique($email) :bool {
 }
 
 // ENREGISTRE L'USER avec son mdp crypté
-function register_user($file) :void {
+function register_user($file): void
+{
     $datas = file($file);
     $users = unserialize($datas[0]);
     $user = [
+        'id' => bin2hex(random_bytes(15)),
         'pseudo' => strtolower($_POST['pseudo']),
         'email' => strtolower($_POST['email']),
-        'password' => password_hash($_POST['password'], PASSWORD_BCRYPT, ['cost' => 12])
+        'password' => password_hash($_POST['password'], PASSWORD_BCRYPT, ['cost' => 12]),
+        'photo' => ''
     ];
     $users[] = $user;
     file_put_contents($file, serialize($users));
-    header('Location: /index.php?registration-successed');
+    header("Location: index.php?registration-successed");
+    exit();
 }
-?>
