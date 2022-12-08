@@ -1,7 +1,7 @@
         <div style="height:80px;"></div>
         </div>
         <footer class='pt-2 border-top' style="color:#FFF;text-align:center;background:<?= $theme ?>">
-            <p>Mon App Copyright © 2022</p>
+            <p>MB Copyright © 2022</p>
         </footer>
         <!-- COMPTE UNE VUE -->
         <?php require_once('./functions/function_view.php') ?>
