@@ -65,7 +65,7 @@ Voici les identifiants du compte administrateur :
 ![](<https://i.ibb.co/qYdYTKf/signup.jpg>)
 
 #### Tableau de bord administrateur
-![](<https://i.ibb.co/dWCj9mX/dashboard.jpg>)
+![](<https://i.ibb.co/LJVXp5V/dashboard.jpg>)
 
 
 <!-- 
