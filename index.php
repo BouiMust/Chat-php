@@ -1,6 +1,9 @@
 <?php
+// Authentification
 require_once './functions/auth2.php';
+// Fonction messages
 require_once './functions/functions_messages.php';
+// Titre de la page
 $title = 'Page d\'accueil';
 // Importe Header
 require './components/header.php';
