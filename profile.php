@@ -1,58 +1,58 @@
-<?php 
-// Page Profile : utilisation des cookies, l'user se connecte, on crée un cookie qui sera stocké dans le navigateur pour que l'user reste connecté, si il se deconnecte, le cookie sera supprimé. Idem pour la date de naissance, l'user entre sa date, on calcul son age puis on determine si il a droit d'acces au contenu (>=18)
+<?php
+// Authentification
 require_once './functions/auth2.php';
-if (!is_logged()) {
-    header('Location: ./index.php?unauthorized');
-    exit();
-}
-require './functions/functions_profile.php';
+
+// Récupérer les données de l'user en utilisant le pseudo dans SESSION
+// seulement les données necessaires à la page
+/******************* */
+
+$title = 'Mon profil';
+require './components/header.php';
 ?>
 
-<?php require './components/header.php' ?>
-
 <main class="container">
-    <div class="bg-light p-5 rounded">
-        <h1> PROFILE </h1>
-        <div>
-            <!-- vérifie si un user est connecté -->
-            <?php if ($username) : ?>
-                <div class="alert alert-success"><?= 'Bonjour ' . htmlentities($username) ?></div>
-                <a href="/profile.php?action=reset-username"><button class='btn btn-secondary'>Réinitialiser</button></a>
+    <div class="row mx-auto bg-light p-3 rounded">
+        <div class="col-12 py-1 mx-auto mb-3 text-center text-light rounded h4" style="background:<?= $theme ?>">MON PROFIL</div>
+        <div class="row my-5">
+            <?php if (!is_logged()) : ?>
+                <div class="h3 text-center">Vous n'êtes pas connecté.</div>
             <?php else : ?>
-                <form action='' method='post' class='form-inline'>
-                    <div class='form-group'>
-                        <input type='text' name='username' class='form-control' placeholder='Saisir votre nom'>
+                <div class="col d-flex justify-content-end">
+                    <div class="text-center">
+
+                        <!-- PHOTO -->
+                        <img class="rounded border shadow" src="<?= isset($_SESSION['user']['photo']) && $_SESSION['user']['photo'] !== '' ? $_SESSION['user']['photo'] : './images/profile.png' ?>" alt="photo de profil" width="250px">
+
+                        <!-- CHARGER UNE PHOTO -->
+                        <form action="./functions/function_profile.php" method="POST" enctype="multipart/form-data" class="row">
+                            <label for="file" class="file btn btn-light w-50 border border-2">Charger une photo</label>
+                            <input type="file" name="file" id="file" hidden />
+                            <button type="submit" class="file btn btn-light w-50 border border-2">Enregistrer</button>
+                        </form>
+
                     </div>
-                    <button type='submit' class='btn btn-primary'>Se connecter</button>
-                </form>
-            <?php endif; ?>
-            <!-- vérifie l'année de l'user -->
-            <p>Entrer votre date de naissance (entre 1919 et 2010) :</p>
-            <form action='' method='post' class='form-inline'>
-                <div class='form-group'>
-                    <!-- méthode avec input -->
-                    <!-- <input type='number' name='year' class='form-control' min=1919 max=2010 value=<?php if (!empty($_POST['year'])) : echo htmlentities($_POST['year']); else : echo 2000; endif;?>> -->
-                    <!-- méthode avec select -->
-                    <select name="year" class='form-control'>
-                        <?php for ($i = 2019; $i >= 1919; $i--) : ?> 
-                        <option value=<?=$i?>><?=$i?></option>
-                        <?php endfor ?>
-                    </select>
                 </div>
-                <button type='submit' class='btn btn-primary'>Valider</button>
-            </form>
-            <!-- Vérifie si l'age est present et + de 18 -->
-            <?php if ($age) : ?>
-                <a href="/profile.php?action=reset-age"><button class='btn btn-secondary'>Réinitialiser</button></a>
-                <?php if ($age >= 18) : ?>
-                    <div class="alert alert-success"><?= 'Accès autorisé.' ?></div>
-                <?php else : ?>
-                    <div class="alert alert-danger"><?= 'Accès refusé.' ?></div>
-                <?php endif ?>
+                <div class="col ps-4 h4 mx-auto">
+                    <div>Pseudo : <span class="text-danger"><?= $_SESSION['user']['pseudo'] ?></span></div>
+                    <div class="opacity-25">Email : <span class="text-danger">user@gmail.com</span></div>
+                    <div>Mot de passe : <span class="text-danger"><?= '********' . substr($_SESSION['user']['password'], -4) ?></span></div>
+                    <div class="opacity-25">Identifiant : <span class="text-danger">azertyuqsdfgtfhy</span></div>
+                    <div class="opacity-25">Nom : <span class="text-danger">paul</span></div>
+                    <div class="opacity-25">Prénom : <span class="text-danger">emb</span></div>
+                    <div class="opacity-25">Age : <span class="text-danger">31</span></div>
+                    <div class="opacity-25">Ville : <span class="text-danger">Versailles</span></div>
+                    <div class="">Statut :
+                        <?php if (is_admin()) : ?>
+                            <span class="text-white fw-bold rounded px-3" style="background:#933">Administrateur</span>
+                        <?php else : ?>
+                            <span class="text-white fw-bold rounded px-3" style="background:#44A">Membre</span>
+                        <?php endif ?>
+                    </div>
+                    <div class="opacity-25">Date d'inscription : <span class="text-danger"><?= date('d/m/Y') ?></span></div>
+                </div>
             <?php endif ?>
         </div>
     </div>
 </main>
-<?php
-?>
+
 <?php require './components/footer.php' ?>
