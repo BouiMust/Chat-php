@@ -1,5 +1,0 @@
-Pizza		
-VRF	fromage, olive, thon	10
-ERT	olive, tomate, poivron	15
-IIE	thon, salade, oignon	12
-AZE	oeuf, merguez, poulet	14
