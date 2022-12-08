@@ -24,10 +24,29 @@ $title = 'Tableau de bord';
 
 <?php require './components/header.php' ?>
 <main class="container">
-    <div class="bg-light p-5 rounded row">
-    <?php if (array_key_exists('account-deleted', $_GET)) echo '<h3 class="alert alert-success">Compte utilisateur supprimé.</h3>'; ?>
-    <?php if (array_key_exists('administrator', $_GET)) echo '<h3 class="alert alert-danger">Vous ne pouvez pas supprimer votre compte.</h3>'; ?>
-        <h1> Tableau de bord </h1>
+    <div class="row mx-auto bg-light p-3 rounded">
+        <div class="col-12 py-1 mx-auto mb-3 text-center text-light rounded h4" style="background:<?= $theme ?>">TABLEAU DE BORD</div>
+        <?php if (array_key_exists('account-deleted', $_GET)) echo '<p class="alert alert-success p-1 fs-4 text-center">Compte utilisateur supprimé.</p>'; ?>
+        <?php if (array_key_exists('administrator', $_GET)) echo '<p class="alert alert-danger p-1 fs-4 text-center">Vous ne pouvez pas supprimer votre compte.</p>'; ?>
+        
+        <!-- BLOC USER -->
+        <div class="p-5 rounded row" style="text-align:center;">
+            <h1 style=''> Nombre d'utilisateurs inscrits </h1>
+            <h2 class='col-md-5' style='border:1px solid;margin:auto;'><?= count($users) ?></h2>
+            <h1 style=''> Liste des utilisateurs </h1>
+            <table class='col-md-9' style='margin:auto;border:1px solid'>
+            <tr style='border:1px solid;'>
+                <th>IDENTIFIANT</th>
+                <th>PSEUDO</th> <!-- header -->
+                <th>EMAIL</th>
+                <th>PASSWORD</th>
+                <th></th>
+            </tr>
+            <?= show_users($users) ?>
+            </table>
+        </div>
+
+        <!-- BLOC VIEW -->
         <div class='col-md-4'>
             <form action='' method='get' class='form-inline'>
                 <div class='form-group' style='margin:10px;padding:5px;background:#EEE;'>
@@ -76,20 +95,8 @@ $title = 'Tableau de bord';
             </div>
         </div>
     </div>
-    <div class="p-5 rounded row" style="background:#CCA; text-align:center;">
-        <h1 style=''> Nombre d'utilisateurs inscrits </h1>
-        <h2 class='col-md-7' style='border:1px solid;margin:auto;background:#BB9;'><?= count($users) ?></h2>
-        <h1 style=''> Liste des utilisateurs </h1>
-        <table class='col-md-7' style='margin:auto;border:1px solid'>
-            <tr style='border:1px solid;background:#BB9;'>
-                <th style='width:33.33%;'>PSEUDO</th> <!-- header -->
-                <th style='width:33.34%;'>EMAIL</th>
-                <th style='width:33.33%;'>PASSWORD</th>
-                <th></th>
-            </tr>
-            <?= show_users($users) ?>
-        </table>
-    </div>
+    
+
 </main>
 
 <?php require './components/footer.php' ?>
