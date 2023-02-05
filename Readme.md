@@ -1,13 +1,13 @@
-## Tchat, Espace de discussion
+## Tchat, Application de messagerie
   
-Ce projet a pour but de me familiariser avec le langage PHP.
 Il s'agit d'une application qui permet d'envoyer et partager des messages entre les utilisateurs.
+Ce projet a pour but de me familiariser avec le langage PHP.
   
-Environnement de développement :
+**Environnement de développement** :
 ``WAMP, Visual Code Studio``
   
-Technologies utilisées :
-``HTML / CSS / Bootstrap / Javascript / PHP``
+**Technologies utilisées** :
+``HTML / CSS / Javascript / PHP / Bootstrap``
   
 ### INSTALLATION ET EXECUTION DE L'APPLICATION
   
@@ -46,31 +46,23 @@ Voici les identifiants du compte administrateur :
 
 ### RENDU VISUEL
 
-#### Page d'acceuil (visiteur)
-![](<https://i.ibb.co/gyC7279/home-1.jpg>)
+#### Page d'accueil (vue visiteur)
+<img src="https://i.ibb.co/gyC7279/home-1.jpg" style="max-width:700px">
 
-#### Page d'acceuil (membre)
-![](<https://i.ibb.co/GQV1VfT/home-2.jpg>)
+#### Page d'accueil (vue membre)
+<img src="https://i.ibb.co/GQV1VfT/home-2.jpg" style="max-width:700px">
 
-#### Page d'acceuil (Admin)
-![](<https://i.ibb.co/wMkH1Nc/home-3.jpg>)
+#### Page d'accueil (vue administrateur)
+<img src="https://i.ibb.co/wMkH1Nc/home-3.jpg" style="max-width:700px">
 
-#### Page profil
-![](<https://i.ibb.co/f1PJm7B/profile.jpg>)
+#### Page de profil
+<img src="https://i.ibb.co/f1PJm7B/profile.jpg" style="max-width:700px">
 
-#### Page connexion
-![](<https://i.ibb.co/Sm7FJ41/login.jpg>)
+#### Page de connexion
+<img src="https://i.ibb.co/Sm7FJ41/login.jpg" style="max-width:700px">
 
-#### Page inscription
-![](<https://i.ibb.co/qYdYTKf/signup.jpg>)
+#### Page d'inscription
+<img src="https://i.ibb.co/qYdYTKf/signup.jpg" style="max-width:700px">
 
 #### Tableau de bord administrateur
-![](<https://i.ibb.co/LJVXp5V/dashboard.jpg>)
-
-
-<!-- 
-Améliorations :
-- ajouter un trie pour les utilisateurs (date d'inscription, ordre alpha)
-- operation CRUD user
-- operation CRUD post
--->
+<img src="https://i.ibb.co/LJVXp5V/dashboard.jpg" style="max-width:700px">
