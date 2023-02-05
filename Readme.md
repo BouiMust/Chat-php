@@ -47,7 +47,7 @@ Voici les identifiants du compte administrateur :
 ### RENDU VISUEL
 
 #### Page d'accueil (vue visiteur)
-<img src="https://i.ibb.co/gyC7279/home-1.jpg" width="90%px">
+<img src="https://i.ibb.co/8rP867f/tchat.png" width="90%px">
 
 #### Page d'accueil (vue membre)
 <img src="https://i.ibb.co/GQV1VfT/home-2.jpg" width="90%px">
