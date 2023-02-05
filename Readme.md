@@ -15,7 +15,7 @@ Cloner ce dépôt et suivre une des 2 méthodes ci-dessous.
   
 __Méthode 1__ : Installer PHP sur https://www.php.net/downloads.php. Pour Windows il s'agit de la version VS16 x64 Non Thread Safe (à ce jour). Ensuite aller dans les paramètres avancés du système -> variable d'environnement, ajouter le chemin de l'executable PHP (exemple: C:\Program Files\PHP).
 Pour savoir si php est bien installé, ouvrir l'invité de commande ou terminal, puis entrer la commande ``php -v``.  
-Pour lancer l'application, ouvrir un terminal à la racine du dépôt et lancer la commande ``php -S localhost:8000``, l'application sera disponible sur ``http://localhost:8000``
+Pour lancer l'application, ouvrir un terminal à la racine du dépôt et lancer la commande ``php -S localhost:9000``, l'application sera disponible sur ``http://localhost:9000``
 
 __Méthode 2__ : Installer Wamp pour Windows https://www.wampserver.com/. Aller dans C:\wamp64, puis créer un dossier 'www' s'il n'est pas déjà crée. Mettre ce dépôt dans le dossier 'www'.  
 Lancer le serveur Wamp. L'application' sera accessible sur ``http://localhost`` ou ``http://127.0.0.1/``
@@ -47,22 +47,22 @@ Voici les identifiants du compte administrateur :
 ### RENDU VISUEL
 
 #### Page d'accueil (vue visiteur)
-<img src="https://i.ibb.co/gyC7279/home-1.jpg" width="80%px">
+<img src="https://i.ibb.co/gyC7279/home-1.jpg" width="90%px">
 
 #### Page d'accueil (vue membre)
-<img src="https://i.ibb.co/GQV1VfT/home-2.jpg" width="80%px">
+<img src="https://i.ibb.co/GQV1VfT/home-2.jpg" width="90%px">
 
 #### Page d'accueil (vue administrateur)
-<img src="https://i.ibb.co/wMkH1Nc/home-3.jpg" width="80%px">
+<img src="https://i.ibb.co/wMkH1Nc/home-3.jpg" width="90%px">
 
 #### Page de profil
-<img src="https://i.ibb.co/f1PJm7B/profile.jpg" width="80%px">
+<img src="https://i.ibb.co/f1PJm7B/profile.jpg" width="90%px">
 
 #### Page de connexion
-<img src="https://i.ibb.co/Sm7FJ41/login.jpg" width="80%px">
+<img src="https://i.ibb.co/Sm7FJ41/login.jpg" width="90%px">
 
 #### Page d'inscription
-<img src="https://i.ibb.co/qYdYTKf/signup.jpg" width="80%px">
+<img src="https://i.ibb.co/qYdYTKf/signup.jpg" width="90%px">
 
 #### Tableau de bord administrateur
-<img src="https://i.ibb.co/LJVXp5V/dashboard.jpg" width="80%px">
+<img src="https://i.ibb.co/LJVXp5V/dashboard.jpg" width="90%px">
