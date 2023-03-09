@@ -30,7 +30,8 @@ Les données sont sauvegardées dans des fichiers, accessibles dans le dossier '
 Il y a 3 types de données : Users, Messages, et View.  
 ~ Le fichier `users` regroupe les utilisateurs inscris.  
 ~ Le fichier `message` regroupe les messages envoyés.  
-~ Le dossier `views` regroupe les nombres de visites, chaque fichier correspond à un jour.
+~ Le dossier `views` regroupe les nombres de visites, chaque fichier correspond à un jour.  
+Note : il ne s'agit pas d'une vrai base de données mais d'un système de récupération et de sauvegarde des données pour les persister.
 
 ### TYPES D'UTILISATEUR
 Il existe 3 types d'utilisateur de l'application :  
