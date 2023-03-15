@@ -48,22 +48,22 @@ Voici les identifiants du compte administrateur :
 ### RENDU VISUEL
 
 #### Page d'accueil (vue visiteur)
-<img src="https://i.ibb.co/8rP867f/tchat.png" width="300px">
+<img src="https://i.ibb.co/8rP867f/tchat.png" width="500px">
 
 #### Page d'accueil (vue membre)
-<img src="https://i.ibb.co/GQV1VfT/home-2.jpg" width="100%">
+<img src="https://i.ibb.co/GQV1VfT/home-2.jpg" width="500px">
 
 #### Page d'accueil (vue administrateur)
-<img src="https://i.ibb.co/wMkH1Nc/home-3.jpg" width="100%">
+<img src="https://i.ibb.co/wMkH1Nc/home-3.jpg" width="500px">
 
 #### Page de profil
-<img src="https://i.ibb.co/f1PJm7B/profile.jpg" width="100%">
+<img src="https://i.ibb.co/f1PJm7B/profile.jpg" width="500px">
 
 #### Page de connexion
-<img src="https://i.ibb.co/Sm7FJ41/login.jpg" width="100%">
+<img src="https://i.ibb.co/Sm7FJ41/login.jpg" width="500px">
 
 #### Page d'inscription
-<img src="https://i.ibb.co/qYdYTKf/signup.jpg" width="100%">
+<img src="https://i.ibb.co/qYdYTKf/signup.jpg" width="500px">
 
 #### Tableau de bord administrateur
-<img src="https://i.ibb.co/LJVXp5V/dashboard.jpg" width="100%">
+<img src="https://i.ibb.co/LJVXp5V/dashboard.jpg" width="500px">
