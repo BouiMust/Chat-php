@@ -65,5 +65,5 @@ Voici les identifiants du compte administrateur :
 #### Page d'inscription
 <img src="https://i.ibb.co/qYdYTKf/signup.jpg" width="500px">
 
-#### Tableau de bord administrateur
-<img src="https://i.ibb.co/LJVXp5V/dashboard.jpg" width="500px">
+<!-- #### Tableau de bord administrateur
+<img src="https://i.ibb.co/LJVXp5V/dashboard.jpg" width="500px"> -->
